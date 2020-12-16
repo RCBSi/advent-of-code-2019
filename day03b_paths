@@ -56,3 +56,6 @@ print(min([manhattan(p) for p in intersect(3,4) if p != (0,0)]))
 print(paths[5])
 print(min([manhattan(p) for p in intersect(6,7) if p != (0,0)]))
 print(paths[8])
+
+# This seems wasteful, to search the entire space of timesteps. 
+# Gradient descent would literally point us in the right direction. 
