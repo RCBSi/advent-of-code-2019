@@ -1,5 +1,5 @@
 1. The code had variables at 0,6,223-225. The rest of the program is static.
-2. Control flowed linearly forwards.
+2. Control flowed monotonically forwards.
 
 Dependency in the long example: 
     "wr", which location was written, '.' if nothing was written.
