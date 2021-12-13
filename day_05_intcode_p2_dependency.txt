@@ -1,4 +1,4 @@
-1. The code had 3 variables. The rest of the program is static.
+1. The code had variables at 0,6,223-225. The rest of the program is static.
 2. Control flowed linearly forwards.
 
 Dependency in the long example: 
