@@ -1,112 +1,113 @@
-Only three locations in the code changed at any moment during the run. 225 changed only 3 times.
-This code has a static command part and two integer variables, at locations 223 and 224. 
+1. The code had 3 variables. The rest of the program is static.
+2. Control flowed linearly forwards.
 
 Dependency in the long example: 
-    "Op" = Operator indicates which operator was used.
-    "at" = pointer indicates how program-command flow moved.
-    "ref" = which places in the code were referenced, 
-    "args" = the arguments passed to the operator, 
-    an input, if such exists (only on th first line)
-    "wr", whichc location was written, '.' if nothing was written.
-
-Op 3 at 0 ref [225] args [0] 5 wr 225
-Op 1 at 2 ref [225, 6, 6] args [5, 1100, 1100]  wr 6
-Op 5 at 6 ref [1, 238] args [1, 238]  wr .
-Op 5 at 238 ref [0, 99999] args [0, 99999]  wr .
-Op 5 at 241 ref [227, 247] args [227, 247]  wr .
-Op 5 at 247 ref [227, 99999] args [0, 99999]  wr .
-Op 5 at 250 ref [0, 256] args [3, 256]  wr .
-Op 6 at 256 ref [227, 99999] args [227, 99999]  wr .
-Op 6 at 259 ref [0, 265] args [0, 265]  wr .
-Op 6 at 265 ref [0, 99999] args [3, 99999]  wr .
-Op 6 at 268 ref [227, 274] args [0, 274]  wr .
-Op 5 at 274 ref [1, 280] args [1, 280]  wr .
-Op 1 at 280 ref [225, 225, 225] args [5, 5, 5]  wr 225
-Op 1 at 284 ref [294, 0, 0] args [294, 0, 3]  wr 0
-Op 5 at 288 ref [1, 0] args [1, 294]  wr .
-Op 6 at 294 ref [0, 300] args [0, 300]  wr .
-Op 1 at 300 ref [225, 225, 225] args [10, 10, 10]  wr 225
-Op 1 at 304 ref [314, 0, 0] args [314, 0, 294]  wr 0
-Op 6 at 308 ref [0, 0] args [0, 314]  wr .
-Op 7 at 314 ref [226, 226, 224] args [677, 226, 0]  wr 224
-Op 2 at 318 ref [2, 223, 223] args [2, 0, 0]  wr 223
-Op 5 at 322 ref [224, 329] args [0, 329]  wr .
-Op 1 at 325 ref [223, 1, 223] args [0, 1, 0]  wr 223
-Op 8 at 329 ref [677, 226, 224] args [677, 677, 0]  wr 224
-Op 2 at 333 ref [223, 2, 223] args [1, 2, 1]  wr 223
-Op 5 at 337 ref [224, 344] args [1, 344]  wr .
-Op 7 at 344 ref [677, 677, 224] args [226, 677, 1]  wr 224
-Op 2 at 348 ref [223, 2, 223] args [2, 2, 2]  wr 223
-Op 5 at 352 ref [224, 359] args [1, 359]  wr .
-Op 7 at 359 ref [677, 226, 224] args [677, 226, 1]  wr 224
-Op 2 at 363 ref [2, 223, 223] args [2, 4, 4]  wr 223
-Op 6 at 367 ref [224, 374] args [0, 374]  wr .
-Op 8 at 374 ref [226, 677, 224] args [677, 226, 0]  wr 224
-Op 2 at 378 ref [223, 2, 223] args [8, 2, 8]  wr 223
-Op 6 at 382 ref [224, 389] args [0, 389]  wr .
-Op 8 at 389 ref [677, 677, 224] args [226, 226, 0]  wr 224
-Op 2 at 393 ref [2, 223, 223] args [2, 16, 16]  wr 223
-Op 6 at 397 ref [224, 404] args [1, 404]  wr .
-Op 1 at 400 ref [223, 1, 223] args [32, 1, 32]  wr 223
-Op 8 at 404 ref [226, 226, 224] args [677, 226, 1]  wr 224
-Op 2 at 408 ref [2, 223, 223] args [2, 33, 33]  wr 223
-Op 6 at 412 ref [224, 419] args [0, 419]  wr .
-Op 7 at 419 ref [677, 226, 224] args [677, 677, 0]  wr 224
-Op 2 at 423 ref [2, 223, 223] args [2, 66, 66]  wr 223
-Op 6 at 427 ref [224, 434] args [0, 434]  wr .
-Op 7 at 434 ref [226, 226, 224] args [677, 677, 0]  wr 224
-Op 2 at 438 ref [223, 2, 223] args [132, 2, 132]  wr 223
-Op 5 at 442 ref [224, 449] args [0, 449]  wr .
-Op 1 at 445 ref [223, 1, 223] args [264, 1, 264]  wr 223
-Op 7 at 449 ref [226, 226, 224] args [226, 226, 0]  wr 224
-Op 2 at 453 ref [223, 2, 223] args [265, 2, 265]  wr 223
-Op 6 at 457 ref [224, 464] args [0, 464]  wr .
-Op 7 at 464 ref [226, 677, 224] args [226, 677, 0]  wr 224
-Op 2 at 468 ref [223, 2, 223] args [530, 2, 530]  wr 223
-Op 5 at 472 ref [224, 479] args [1, 479]  wr .
-Op 8 at 479 ref [677, 226, 224] args [226, 677, 1]  wr 224
-Op 2 at 483 ref [223, 2, 223] args [1060, 2, 1060]  wr 223
-Op 6 at 487 ref [224, 494] args [0, 494]  wr .
-Op 8 at 494 ref [226, 677, 224] args [226, 677, 0]  wr 224
-Op 2 at 498 ref [223, 2, 223] args [2120, 2, 2120]  wr 223
-Op 6 at 502 ref [224, 509] args [0, 509]  wr .
-Op 8 at 509 ref [677, 677, 224] args [226, 677, 0]  wr 224
-Op 2 at 513 ref [223, 2, 223] args [4240, 2, 4240]  wr 223
-Op 6 at 517 ref [224, 524] args [0, 524]  wr .
-Op 8 at 524 ref [677, 226, 224] args [226, 226, 0]  wr 224
-Op 2 at 528 ref [2, 223, 223] args [2, 8480, 8480]  wr 223
-Op 6 at 532 ref [224, 539] args [1, 539]  wr .
-Op 1 at 535 ref [223, 1, 223] args [16960, 1, 16960]  wr 223
-Op 8 at 539 ref [677, 677, 224] args [677, 677, 1]  wr 224
-Op 2 at 543 ref [2, 223, 223] args [2, 16961, 16961]  wr 223
-Op 5 at 547 ref [224, 554] args [1, 554]  wr .
-Op 8 at 554 ref [677, 677, 224] args [677, 226, 1]  wr 224
-Op 2 at 558 ref [2, 223, 223] args [2, 33922, 33922]  wr 223
-Op 6 at 562 ref [224, 569] args [0, 569]  wr .
-Op 8 at 569 ref [677, 226, 224] args [677, 226, 0]  wr 224
-Op 2 at 573 ref [2, 223, 223] args [2, 67844, 67844]  wr 223
-Op 5 at 577 ref [224, 584] args [0, 584]  wr .
-Op 1 at 580 ref [223, 1, 223] args [135688, 1, 135688]  wr 223
-Op 8 at 584 ref [226, 226, 224] args [226, 677, 0]  wr 224
-Op 2 at 588 ref [223, 2, 223] args [135689, 2, 135689]  wr 223
-Op 5 at 592 ref [224, 599] args [0, 599]  wr .
-Op 1 at 595 ref [223, 1, 223] args [271378, 1, 271378]  wr 223
-Op 7 at 599 ref [226, 677, 224] args [677, 677, 0]  wr 224
-Op 2 at 603 ref [2, 223, 223] args [2, 271379, 271379]  wr 223
-Op 5 at 607 ref [224, 614] args [0, 614]  wr .
-Op 1 at 610 ref [223, 1, 223] args [542758, 1, 542758]  wr 223
-Op 7 at 614 ref [226, 677, 224] args [677, 226, 0]  wr 224
-Op 2 at 618 ref [2, 223, 223] args [2, 542759, 542759]  wr 223
-Op 6 at 622 ref [224, 629] args [0, 629]  wr .
-Op 7 at 629 ref [226, 226, 224] args [226, 677, 0]  wr 224
-Op 2 at 633 ref [2, 223, 223] args [2, 1085518, 1085518]  wr 223
-Op 5 at 637 ref [224, 644] args [1, 644]  wr .
-Op 7 at 644 ref [677, 226, 224] args [226, 677, 1]  wr 224
-Op 2 at 648 ref [2, 223, 223] args [2, 2171036, 2171036]  wr 223
-Op 5 at 652 ref [224, 659] args [1, 659]  wr .
-Op 7 at 659 ref [677, 677, 224] args [677, 226, 1]  wr 224
-Op 2 at 663 ref [223, 2, 223] args [4342072, 2, 4342072]  wr 223
-Op 5 at 667 ref [224, 674] args [0, 674]  wr .
-Op 1 at 670 ref [223, 1, 223] args [8684144, 1, 8684144]  wr 223
-Op 4 at 674 ref [223] args [8684145]  wr .
-86x4xx5
+    "wr", which location was written, '.' if nothing was written.
+    "gil", where the pointer was, that did the operation. I.e., "gil did something to wr."
+    Parameterrs:    
+        "Op" = Operator indicates which operator was used.
+        "[...]" = the arguments passed to the operator, 
+        an input, if such exists (only on th first line)
+        "found at" = which places in the code were referenced to find those arguments.
+       
+    
+Write:225  gil:   0 op 3 [0] 5 found at: [225]
+Write:6    gil:   2 op 1 [5, 1100, 1100]  found at: [225, 6, 6]
+Write:.    gil:   6 op 5 [1, 238]  found at: [1, 238]
+Write:.    gil: 238 op 5 [0, 99999]  found at: [0, 99999]
+Write:.    gil: 241 op 5 [227, 247]  found at: [227, 247]
+Write:.    gil: 247 op 5 [0, 99999]  found at: [227, 99999]
+Write:.    gil: 250 op 5 [3, 256]  found at: [0, 256]
+Write:.    gil: 256 op 6 [227, 99999]  found at: [227, 99999]
+Write:.    gil: 259 op 6 [0, 265]  found at: [0, 265]
+Write:.    gil: 265 op 6 [3, 99999]  found at: [0, 99999]
+Write:.    gil: 268 op 6 [0, 274]  found at: [227, 274]
+Write:.    gil: 274 op 5 [1, 280]  found at: [1, 280]
+Write:225  gil: 280 op 1 [5, 5, 5]  found at: [225, 225, 225]
+Write:0    gil: 284 op 1 [294, 0, 3]  found at: [294, 0, 0]
+Write:.    gil: 288 op 5 [1, 294]  found at: [1, 0]
+Write:.    gil: 294 op 6 [0, 300]  found at: [0, 300]
+Write:225  gil: 300 op 1 [10, 10, 10]  found at: [225, 225, 225]
+Write:0    gil: 304 op 1 [314, 0, 294]  found at: [314, 0, 0]
+Write:.    gil: 308 op 6 [0, 314]  found at: [0, 0]
+Write:224  gil: 314 op 7 [677, 226, 0]  found at: [226, 226, 224]
+Write:223  gil: 318 op 2 [2, 0, 0]  found at: [2, 223, 223]
+Write:.    gil: 322 op 5 [0, 329]  found at: [224, 329]
+Write:223  gil: 325 op 1 [0, 1, 0]  found at: [223, 1, 223]
+Write:224  gil: 329 op 8 [677, 677, 0]  found at: [677, 226, 224]
+Write:223  gil: 333 op 2 [1, 2, 1]  found at: [223, 2, 223]
+Write:.    gil: 337 op 5 [1, 344]  found at: [224, 344]
+Write:224  gil: 344 op 7 [226, 677, 1]  found at: [677, 677, 224]
+Write:223  gil: 348 op 2 [2, 2, 2]  found at: [223, 2, 223]
+Write:.    gil: 352 op 5 [1, 359]  found at: [224, 359]
+Write:224  gil: 359 op 7 [677, 226, 1]  found at: [677, 226, 224]
+Write:223  gil: 363 op 2 [2, 4, 4]  found at: [2, 223, 223]
+Write:.    gil: 367 op 6 [0, 374]  found at: [224, 374]
+Write:224  gil: 374 op 8 [677, 226, 0]  found at: [226, 677, 224]
+Write:223  gil: 378 op 2 [8, 2, 8]  found at: [223, 2, 223]
+Write:.    gil: 382 op 6 [0, 389]  found at: [224, 389]
+Write:224  gil: 389 op 8 [226, 226, 0]  found at: [677, 677, 224]
+Write:223  gil: 393 op 2 [2, 16, 16]  found at: [2, 223, 223]
+Write:.    gil: 397 op 6 [1, 404]  found at: [224, 404]
+Write:223  gil: 400 op 1 [32, 1, 32]  found at: [223, 1, 223]
+Write:224  gil: 404 op 8 [677, 226, 1]  found at: [226, 226, 224]
+Write:223  gil: 408 op 2 [2, 33, 33]  found at: [2, 223, 223]
+Write:.    gil: 412 op 6 [0, 419]  found at: [224, 419]
+Write:224  gil: 419 op 7 [677, 677, 0]  found at: [677, 226, 224]
+Write:223  gil: 423 op 2 [2, 66, 66]  found at: [2, 223, 223]
+Write:.    gil: 427 op 6 [0, 434]  found at: [224, 434]
+Write:224  gil: 434 op 7 [677, 677, 0]  found at: [226, 226, 224]
+Write:223  gil: 438 op 2 [132, 2, 132]  found at: [223, 2, 223]
+Write:.    gil: 442 op 5 [0, 449]  found at: [224, 449]
+Write:223  gil: 445 op 1 [264, 1, 264]  found at: [223, 1, 223]
+Write:224  gil: 449 op 7 [226, 226, 0]  found at: [226, 226, 224]
+Write:223  gil: 453 op 2 [265, 2, 265]  found at: [223, 2, 223]
+Write:.    gil: 457 op 6 [0, 464]  found at: [224, 464]
+Write:224  gil: 464 op 7 [226, 677, 0]  found at: [226, 677, 224]
+Write:223  gil: 468 op 2 [530, 2, 530]  found at: [223, 2, 223]
+Write:.    gil: 472 op 5 [1, 479]  found at: [224, 479]
+Write:224  gil: 479 op 8 [226, 677, 1]  found at: [677, 226, 224]
+Write:223  gil: 483 op 2 [1060, 2, 1060]  found at: [223, 2, 223]
+Write:.    gil: 487 op 6 [0, 494]  found at: [224, 494]
+Write:224  gil: 494 op 8 [226, 677, 0]  found at: [226, 677, 224]
+Write:223  gil: 498 op 2 [2120, 2, 2120]  found at: [223, 2, 223]
+Write:.    gil: 502 op 6 [0, 509]  found at: [224, 509]
+Write:224  gil: 509 op 8 [226, 677, 0]  found at: [677, 677, 224]
+Write:223  gil: 513 op 2 [4240, 2, 4240]  found at: [223, 2, 223]
+Write:.    gil: 517 op 6 [0, 524]  found at: [224, 524]
+Write:224  gil: 524 op 8 [226, 226, 0]  found at: [677, 226, 224]
+Write:223  gil: 528 op 2 [2, 8480, 8480]  found at: [2, 223, 223]
+Write:.    gil: 532 op 6 [1, 539]  found at: [224, 539]
+Write:223  gil: 535 op 1 [16960, 1, 16960]  found at: [223, 1, 223]
+Write:224  gil: 539 op 8 [677, 677, 1]  found at: [677, 677, 224]
+Write:223  gil: 543 op 2 [2, 16961, 16961]  found at: [2, 223, 223]
+Write:.    gil: 547 op 5 [1, 554]  found at: [224, 554]
+Write:224  gil: 554 op 8 [677, 226, 1]  found at: [677, 677, 224]
+Write:223  gil: 558 op 2 [2, 33922, 33922]  found at: [2, 223, 223]
+Write:.    gil: 562 op 6 [0, 569]  found at: [224, 569]
+Write:224  gil: 569 op 8 [677, 226, 0]  found at: [677, 226, 224]
+Write:223  gil: 573 op 2 [2, 67844, 67844]  found at: [2, 223, 223]
+Write:.    gil: 577 op 5 [0, 584]  found at: [224, 584]
+Write:223  gil: 580 op 1 [135688, 1, 135688]  found at: [223, 1, 223]
+Write:224  gil: 584 op 8 [226, 677, 0]  found at: [226, 226, 224]
+Write:223  gil: 588 op 2 [135689, 2, 135689]  found at: [223, 2, 223]
+Write:.    gil: 592 op 5 [0, 599]  found at: [224, 599]
+Write:223  gil: 595 op 1 [271378, 1, 271378]  found at: [223, 1, 223]
+Write:224  gil: 599 op 7 [677, 677, 0]  found at: [226, 677, 224]
+Write:223  gil: 603 op 2 [2, 271379, 271379]  found at: [2, 223, 223]
+Write:.    gil: 607 op 5 [0, 614]  found at: [224, 614]
+Write:223  gil: 610 op 1 [542758, 1, 542758]  found at: [223, 1, 223]
+Write:224  gil: 614 op 7 [677, 226, 0]  found at: [226, 677, 224]
+Write:223  gil: 618 op 2 [2, 542759, 542759]  found at: [2, 223, 223]
+Write:.    gil: 622 op 6 [0, 629]  found at: [224, 629]
+Write:224  gil: 629 op 7 [226, 677, 0]  found at: [226, 226, 224]
+Write:223  gil: 633 op 2 [2, 1085518, 1085518]  found at: [2, 223, 223]
+Write:.    gil: 637 op 5 [1, 644]  found at: [224, 644]
+Write:224  gil: 644 op 7 [226, 677, 1]  found at: [677, 226, 224]
+Write:223  gil: 648 op 2 [2, 2171036, 2171036]  found at: [2, 223, 223]
+Write:.    gil: 652 op 5 [1, 659]  found at: [224, 659]
+Write:224  gil: 659 op 7 [677, 226, 1]  found at: [677, 677, 224]
+Write:223  gil: 663 op 2 [4342072, 2, 4342072]  found at: [223, 2, 223]
+Write:.    gil: 667 op 5 [0, 674]  found at: [224, 674]
+Write:223  gil: 670 op 1 [8684144, 1, 8684144]  found at: [223, 1, 223]
+Write:.    gil: 674 op 4 [8684145]  found at: [223]
