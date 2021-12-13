@@ -22,7 +22,11 @@ def ron(pg,gi,vi,gem): #run one: program, index, value_in, global error-printing
             except IndexError:
                 print("HCF-ar.append when mode = 0, gi=",gi,ao)
     if gem:
-        print("Op", op, "at", gi, "ref", ao, "args",ar,{True:vi, None:''}[vi and True], "wr",{1:ao[-1], 0:'.'}[{1:1, 2:1, 3:1, 4:0, 5:0, 6:0, 7:1, 8:1}[op]]) #references
+        wtm = str({1:ao[-1], 0:'.'}[{1:1, 2:1, 3:1, 4:0, 5:0, 6:0, 7:1, 8:1}[op]])
+        print(f"Write:{wtm:4} gil:{gi:4}", 
+            "op", op, ar, {True:vi, None:''}[vi and True], 
+            "found at:", ao  
+        ) #references
     if op == 1:
         pg[ao[-1]] = ar[0] + ar[1]    
         return (pg, gi + np[op] + 1, None)
