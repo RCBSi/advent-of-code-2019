@@ -1,0 +1,50 @@
+import numpy
+
+with open('y2019day06v1.txt', 'r') as file:
+    t = [x.strip() for x in file.readlines()]
+
+def gp(t): # from graph to poset
+    ed = [a.split(')') for a in t]
+    v = numpy.unique(ed)
+    fd = {a:[] for a in v} # forwards
+    bd = {a:[] for a in v} # backwards
+    for (a,b) in ed:
+        fd[a].append(b)
+        bd[b].append(a)
+    for b in v: # just run through once!
+        for a in bd[b]:
+            for c in fd[b]:
+                if a not in bd[c]:
+                    bd[c].append(a)
+                    fd[a].append(c)
+    return fd
+
+def gd(t): # from list of edges to distances.
+    ed = [a.split(')') for a in t]
+    v = numpy.unique(ed)
+    d = {a:{} for a in v} # forwards
+    for a in v:
+        d[a][a] = 0
+    for (a,b) in ed:
+        d[a][b] = 1
+        d[b][a] = 1
+    max, index = 0,0
+    for b in v: # just run through once!
+        if 1832 - len(d[b]) < (1832 - max)*0.6:
+            print(index, b,len(d[b]))
+            max = len(d[b])
+        index += 1
+        for a in d[b]:
+            for c in d[b]:
+                if a not in d[c]:
+                    d[a][c] = d[c][a] = d[b][c]+d[a][b]
+    return d['YOU']['SAN']
+#                else: 
+#                    d[a][c] = d[c][a] = min(d[c][a],d[b][c]+d[a][b])
+#   Because len(v) = len(ed) +1 , the graph is a tree. I.e., 
+#   as soon as a distance is found, shorter distances will not be found!
+
+f = gp(t)
+print("p1",sum([len( f[i]) for i in f ]))
+print("p2", gd(t)-2)
+
