@@ -9,7 +9,7 @@ elements of G which are greater than b. Initialize lt and gt with the successors
 is in G.
 
 for b in G:
-    for each a in l†[b]
+    for each a in lt[b]
         for each c in gt[b]
             add a to lt[c] and add c to gt[a]
 
