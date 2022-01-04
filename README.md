@@ -1,0 +1,3 @@
+# advent-of-code-2019
+
+day 22: the instructions are a sequence of shuffles. Each shuffle is linear; the inverse of each shuffle is linear; the composition of linear shuffles is linear. Arbitrary composition f^k of a linear function f can be computed in log(k) time by representing f as the product of f^2^b for the binary bits b of k. One might be reminded how to code this log_2 decomposition of f^k as one is inverting the function and using the binary reprentation of p, the prime size of the deck, to compute "x => x* a^(p-1)" , the inverse of "x => x*a", so as to invert "deal with increment a" into the function "deal with increment a^(p-1)" which is indeed its inverse for a deck of prime size p.
