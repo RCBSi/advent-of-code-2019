@@ -110,3 +110,8 @@ for u in t:
     print("p1",run(pg,[1],[],0))
     print("p2",run(pg,[2],[],0))
 
+'''
+Lines 46-51 could be collapsed to a line similar to 
+        return (pg, {True:ar[1], False:gi + np[op]+1}[ar[0] and True], vi, vo, reb)
+Use of ar, which is either ao or reb+ao, could prevent the need to split on ao/ reb+ao.
+'''
