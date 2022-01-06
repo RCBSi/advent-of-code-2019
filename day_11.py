@@ -97,10 +97,8 @@ def run(pg,vi,vo,gem): # vi = values input; vo = values outout
     return vo #, pg[0]
 
 def tru(pg,vi,vo,hul, gem): # vi = values input; vo = values outout
-#    global hul
     gi = 0 # global index
     reb = 0
-#    hul = {} # there is no hull color; part 1.
     lox = 0
     loy = 0
     vec = 0 # 0 == up, add 
@@ -124,10 +122,6 @@ def tru(pg,vi,vo,hul, gem): # vi = values input; vo = values outout
             vo = [] 
     return hul
 
-# len(hul) == 1787 is too low. 
-# hypothesis: my realization of vec, lox, loy and motion is wrong.
-# I am too slow to read the "draw" command? Perhaps the robot draws and then quits.
-
 with open('y2019day11v1.txt', 'r') as file:
     t = [x.strip() for x in file.readlines()]
 for u in t:
@@ -148,6 +142,3 @@ for (x,y) in reg1:
     sid[max(yil)-y][x] = '#'
 [''.join(row) for row in sid]
 
-comment = '''
-That line 149 inverts, suggests that I've got my 2d turing machine somewhat backwards vs the intention.
-'''
