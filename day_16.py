@@ -92,3 +92,9 @@ for i in range(100):
 22222222222727272722222226666666666666666661616161
 08642086420819203142086420482604826048260482154871
 '''
+
+fft_comment = '''Is any property of FFT useful? 
+The fact that the matrix is upper-triangular implies that: 
+the value of fft^m(M)[i][j] (j>i) depends only on fft^n(M)[k][l] for k >i and l > i... and n < m.
+A brute search then suffices, i.e.: for n < m, for k > i, compute fft^n[k][:]
+'''
