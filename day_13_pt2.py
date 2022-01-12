@@ -1,0 +1,164 @@
+# Set the first memory integer to 2
+def rp(x,n): #read n parameters as digits from n.
+    if n==0:
+        return []
+    else:
+        return [x%10] + rp(x//10,n-1)
+
+def ron(pg, gi, vi, vo, reb, gem): #run one: program, index, value_in, value_out, relative base, global error-printing mode.
+    op = pg[gi]%100 #opcode
+    np = {1:3,2:3,3:1,4:1,5:2,6:2,7:3,8:3,9:1,99:0} # number of parameters
+    try:
+        mp = rp(pg[gi]//100,np[op]) #mode parameters
+    except KeyError:
+        print("HCF-mp",pg,gi,vi,vo,op)
+    ao = [pg[gip] for gip in range(gi+1,gi+np[op]+1)] #parameters of the active opcode pg[gi]
+    ar = []
+    for i in range(len(ao)):
+        if mp[i] == 1:
+            ar.append(ao[i])
+        elif mp[i] == 0:
+            try:
+                ar.append(pg[ao[i]])
+            except KeyError:
+                ar.append(0)
+                if gem:
+                    print("HCF-ar.append when mode = 0, gi=",gi,ao)
+        elif mp[i] == 2:
+            try:
+                ar.append(pg[reb+ao[i]])
+            except KeyError:
+                ar.append(0)
+                if gem:
+                    print("HCF-ar.append when mode = 2, gi=",gi,ao)
+    if gem and ao:
+        wtm = str({1:ao[-1], 0:'.'}[{1:1, 2:1, 3:1, 4:0, 5:0, 6:0, 7:1, 8:1, 9:1, 99:0}[op]])
+        print(f"Write:{wtm:4} gil:{gi:4}", 
+            "op", op, ar, vi,
+#            {True:vi, None:''}[vi[0] and True], 
+            "found at:", ao  
+        ) #references
+#    if ao and (op==4) and ar == :
+    if op == 1 and mp[-1] < 2:
+        pg[ao[-1]] = ar[0] + ar[1]    
+        return (pg, gi + np[op] + 1, vi, vo, reb)
+    if op == 1 and mp[-1] == 2:
+        pg[reb+ao[-1]] = ar[0] + ar[1]    
+        return (pg, gi + np[op] + 1, vi, vo, reb)        
+    if op == 2 and mp[-1] < 2:
+        pg[ao[-1]] = ar[0] * ar[1]        
+        return (pg, gi + np[op] + 1, vi, vo, reb)
+    if op == 2 and mp[-1] == 2:
+        pg[reb+ao[-1]] = ar[0] * ar[1]        
+        return (pg, gi + np[op] + 1, vi, vo, reb)    
+    if op == 3 and mp[-1] < 2:
+#        print("op3", mp, vi)
+        try:
+            pg[ao[-1]] = vi[-1]
+            vi = vi[:-1]
+        except IndexError:
+            print("HCF-3",gi,vi,op,mp,ao,ar)
+        return (pg, gi + np[op] + 1, vi, vo, reb)
+    if op == 3 and mp[-1] == 2:
+        try:
+            pg[reb+ao[-1]] = vi[-1]
+            
+            vi = vi[:-1]
+        except IndexError:
+            print("HCF-3",gi,vi,op,mp,ao,ar)
+        return (pg, gi + np[op] + 1, vi, vo, reb)
+    if op == 4:
+        vo.append(ar[0])
+        return (pg, gi + np[op] + 1, vi, vo, reb)
+    if op == 5:
+        return (pg, {True:ar[1], False:gi + np[op]+1}[ar[0] and True], vi, vo, reb)
+    if op == 6:
+        return (pg, {True:gi + np[op]+1, False: ar[1]}[ar[0] and True], vi, vo, reb)
+    if op == 7 and mp[-1] < 2:
+        pg[ao[-1]] = {True:1, False:0}[ar[0] < ar[1]]
+        return (pg, gi + np[op] + 1, vi, vo, reb)    
+    if op == 7 and mp[-1] == 2:
+        pg[reb+ao[-1]] = {True:1, False:0}[ar[0] < ar[1]]
+        return (pg, gi + np[op] + 1, vi, vo, reb)
+    if op == 8 and mp[-1] < 2: 
+        pg[ao[-1]] = {True:1, False:0}[ar[0] == ar[1]]
+        return (pg, gi + np[op] + 1, vi, vo, reb)
+    if op == 8 and mp[-1] == 2: 
+        pg[reb+ao[-1]] = {True:1, False:0}[ar[0] == ar[1]]
+        return (pg, gi + np[op] + 1, vi, vo, reb)        
+    if op == 9:
+        reb += ar[0]
+        return (pg, gi + np[op] + 1, vi, vo, reb)
+    if op == 99:
+        return(pg,gi,vi,vo,reb)
+
+def run(pg,vi,vo,gem): # vi = values input; vo = values outout
+    gi = 0 # global index
+    reb = 0
+    while pg[gi] != 99:
+        (pg, gi, vi, vo, reb) = ron(pg, gi, vi, vo, reb, gem)
+    return vo #, pg[0]
+
+def ric(coum, nexo): #print and count blocks
+    crii = [[0 for j in range(max([j for (i,j) in coum])+1)
+        ] for i in range(max([i for (i,j) in coum])+1)]
+    for k in coum:
+        (i,j) = k
+#        if coum[(i,j)] == 2:
+#            print("setting",i,j)
+        crii[i][j] = coum[(i,j)]
+#        if coum[(i,j)] == 2:
+#            print("set", crii[i][j])
+    if sum([x.count(1) for x in crii]) == 76:
+        for kro in range(len(crii)-3,len(crii)-1):
+#            if 4 in crii[kro] and (3 in crii[kro] or 3 in crii[kro+1]):
+#                print(''.join([{1:'|',0:'.',3:'-',2:'B',4:'o'}[xi] for xi in crii[kro]]))# for iow in range(len(crii)-3,len(crii)-1)]
+            if 4 in crii[kro] and 3 in crii[kro]:
+                nexo = ''.join([{1:'|',0:'.',3:'-',2:'B',4:'o'}[xi] for xi in crii[kro]])
+    if [coum[k] for k in coum].count(2) == sum([x.count(2) for x in crii]):
+        return sum([x.count(2) for x in crii]), sum([x.count(1) for x in crii]), nexo
+    else: 
+        return -1
+
+def aru(pg,vi,vo,joi, gem): # aru = arcade run.
+#    global hul
+    gi = 0 # global index
+    reb = 0
+    score = 0
+    nexo = ''
+    scr = {} # there is nothing on the screen.
+    blokt, walkt = (0,0)
+    while pg[gi] != 99:# and (blokt, walkt) != (0,76):
+        if joi and not vi:
+            vi = [joi[-1][0]]
+            joi = joi[:-1]
+        (pg, gi, vi, vo, reb) = ron(pg, gi, vi, vo, reb, gem)
+        if len(vo) > 2:
+            if vo[0] == -1 and vo[1] == 0:
+                score = vo[2]
+                print(score, ric(scr, nexo))
+            else:
+                scr[(vo[1],vo[0])] = vo[2]
+            vo = []
+            blokt, walkt, nexo = ric(scr, nexo) #block count, wall count
+    return score, scr, nexo, blokt
+
+with open('y2019day13v1.txt', 'r') as file:
+    t = [x.strip() for x in file.readlines()]
+for u in t:
+    pj = [int(x) for x in u.split(",")]
+    pg = {i:pj[i] for i in range(len(pj))}
+
+
+jois = [[ 0,il] for il in range(9)]
+
+blokt = 10
+
+while blokt > 0:
+    scor, coum, nexo, blokt = aru(pg,[],[],jois,0)
+    if nexo.index('o') < nexo.index('-'):
+        jois = [[-1,il] for il in range(nexo.index('-') - nexo.index('o') - 1)]+ jois
+    if nexo.index('o') > nexo.index('-'):
+        jois = [[ 1,il] for il in range(nexo.index('o') - nexo.index('-') - 1)]+ jois
+
+print(scor, "pt2")
